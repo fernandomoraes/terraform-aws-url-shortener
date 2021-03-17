@@ -1,0 +1,16 @@
+name: Lint and Test
+on: pull_request
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+jobs:
+  deploy:
+    name: Lint and Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@3d8debd658c92063839bc97da5c2427100420dec
+      - run: terraform init test/integration
+      - run: terraform plan test/integration

@@ -1,3 +1,5 @@
+data "aws_region" "current" {}
+
 module "dynamodb_integration" {
   source = "../ApiGateway"
 
@@ -10,7 +12,7 @@ module "dynamodb_integration" {
 
   integration_http_method = "POST"
   type                    = "AWS"
-  uri                     = "arn:aws:apigateway:sa-east-1:dynamodb:action/${var.dynamodb_action}"
+  uri                     = "arn:aws:apigateway:${data.aws_region.current.name}:dynamodb:action/${var.dynamodb_action}"
   credentials             = aws_iam_role.dynamodb_role.arn
   request_templates       = var.request_templates
   responses               = var.responses
