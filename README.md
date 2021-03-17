@@ -12,7 +12,7 @@ provider "aws" {
 }
 
 module "url-shortener" {
-  source = "../.."
+  source = "github.com/fernandomoraes/terraform-aws-url-shortener.git"
   tags = {
     application = "test"
   }
