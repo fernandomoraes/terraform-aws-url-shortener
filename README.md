@@ -2,7 +2,7 @@
 
 Terraform module for a AWS URL shortener (No Lambda required)
 
-Creates a url shortener using ApiGateway and Dynamodb (without Lambda)
+Creates a url shortener using only ApiGateway and Dynamodb
 
 
 ## Usage
